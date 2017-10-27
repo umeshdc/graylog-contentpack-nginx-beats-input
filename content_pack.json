@@ -2,7 +2,8 @@
 	"name": "Nginx - Bits input content pack",
 	"description": "- This content pack will create two inputs for the nginx 'error_log' and the 'access_log'. \n- Extractors are applied to effectively read the most important data into message fields. You will be able to do searches for all requests of a given remote IP, all requests that were answered with a HTTP 400 or just all requests that were slow.",
 	"category": "Web Servers",
-	"inputs": [{
+	"inputs": [
+		{
 			"id": "59c37f5d9b4ef955df52e525",
 			"title": "nginx error_log - BeatsInput",
 			"configuration": {
@@ -151,20 +152,20 @@
 					"condition_type": "REGEX",
 					"condition_value": "^\\S+\\s+nginx:"
 				},
-				{
-					"condition_type": "REGEX",
-					"condition_value": "^\\S+\\s+nginx:",
-					"converters": [],
-					"cursor_strategy": "COPY",
-					"configuration": {
-						"regex_value": "nginx:\\s+\\S+\\s+(\\S+)"
-					},
-					"extractor_type": "regex",
-					"order": 1,
-					"source_field": "message",
-					"target_field": "http_host",
-					"title": "HTTP host"
-				},
+                {
+                    "title": "HTTP host",
+                    "type": "REGEX",
+                    "configuration": {
+                        "regex_value": "nginx:\\s+\\S+\\s+(\\S+)"
+                    },
+                    "converters": [],
+                    "order": 1,
+                    "cursor_strategy": "COPY",
+                    "target_field": "http_host",
+                    "source_field": "message",
+                    "condition_type": "REGEX",
+                    "condition_value": "^\\S+\\s+nginx:"
+                },
 				{
 					"title": "Remote User",
 					"type": "REGEX",
@@ -373,7 +374,8 @@
 			]
 		}
 	],
-	"streams": [{
+	"streams": [
+		{
 			"id": "5445736fd4c6d7d480b5f4c2",
 			"title": "nginx requests",
 			"description": "All requests that were logged into the nginx access_log",
@@ -480,10 +482,11 @@
 		}
 	],
 	"outputs": [],
-	"dashboards": [{
-		"title": "nginx overview",
-		"description": "Overview of requests handled by nginx",
-		"dashboard_widgets": [{
+	"dashboards": [
+		{
+			"title": "nginx overview",
+			"description": "Overview of requests handled by nginx",
+			"dashboard_widgets": [{
 				"description": "Response codes last hour",
 				"type": "QUICKVALUES",
 				"configuration": {
