@@ -1,6 +1,5 @@
 {
         "name1": "name",
-        "name2": "name2",
 	"name": "Nginx - Bits input content pack",
 	"description": "- This content pack will create two inputs for the nginx 'error_log' and the 'access_log'. \n- Extractors are applied to effectively read the most important data into message fields. You will be able to do searches for all requests of a given remote IP, all requests that were answered with a HTTP 400 or just all requests that were slow.",
 	"category": "Web Servers",
